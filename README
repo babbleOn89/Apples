@@ -10,12 +10,12 @@ A small C++/raylib arcade game where you catch falling apples before time runs o
 - Restart system
 - Player movement + collision
 
-## Screenshot
+## Screenshots
 (Coming Soon)
 
 ## Linux Build
-Compile with:
-```bash
+## Compile with:
+##bash
 g++ *.cpp -o apple-catcher -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lasound
 
 ## Run With
@@ -27,3 +27,5 @@ Can likely be compiled using raylib + MinGW.
 
 ## macOS
 Not officially tested yet.
+
+After the timer runs out, when the game ends, just hit spacebar to restart
