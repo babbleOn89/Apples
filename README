@@ -16,10 +16,10 @@ A small C++/raylib arcade game where you catch falling apples before time runs o
 ## Linux Build
 ## Compile with:
 ##bash
-g++ *.cpp -o apple-catcher -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lasound
+g++ *.cpp -o apples -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lasound
 
 ## Run With
-./apple-catcher
+./apples
 
 ## Windows
 Not officially tested yet.
