@@ -21,20 +21,6 @@ A small arcade-style game made with C++ and raylib where you catch falling apple
 
 ---
 
-## What I Learned
-
-This project was created as part of my journey learning:
-
-- C++
-- raylib
-- Game loops
-- Collision detection
-- Object-oriented programming
-- Linux terminal workflows
-- Neovim
-
----
-
 ## Screenshots
 
 ![Gameplay Screenshot](Screenshot1.png)
