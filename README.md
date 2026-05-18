@@ -46,6 +46,7 @@ A small arcade-style game made with C++ and raylib where you catch falling apple
 Make sure `g++` and `raylib` are installed.
 
 -Bash: g++ main.cpp game.cpp apple.cpp player.cpp tree.cpp -o apples -lraylib
+
 -Run: ./apples
 
 ### Windows
