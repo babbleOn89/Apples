@@ -43,10 +43,10 @@ void Apple::Reset()
         type= APPLE_ROTTEN;
         value = -1;
     }
-    else if(randomType <=2)
+    else if(randomType <= 2)
     {
         type = APPLE_GREEN;
-        value = 3;
+        value = 2;
     }
     else
     {
