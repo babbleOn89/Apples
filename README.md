@@ -40,7 +40,8 @@ The game currently features:
 
 ## Screenshot
 
-![Gameplay Screenshot](screenshot.png)
+![Gameplay Screenshot](Screenshot1.png)
+![Gameplay Screenshot](Screenshot2.png)
 
 ---
 
