@@ -12,7 +12,7 @@ A small C++/raylib arcade game where you catch falling apples before time runs o
 
 ## Screenshots
 ![Gameplay Screenshot](Screenshot1.png)
-![Gameplay Screenshot](Screenshot2.png)
+![Gameplay Screenshot](Graphics/SScreenshot2.png)
 
 # Apple Catcher
 
