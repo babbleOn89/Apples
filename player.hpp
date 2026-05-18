@@ -1,15 +1,15 @@
 #pragma once
 #include <raylib.h>
+#include "draw.hpp"
 
-class Player
+class Player : public Drawable
 {
     public:
     Player();
     ~Player();
-    void Draw();
+    void Draw() override;
     void MoveLeft();
     void MoveRight();
-    float scale;
     Rectangle GetBasketRect();
 
     private:
@@ -18,5 +18,6 @@ class Player
     bool facingRight;
     Texture2D currentImage;
     Vector2 position;
-    int speed;
+    float scale;
+    float speed;
 };

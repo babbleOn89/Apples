@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include <iostream>
 #include <fstream>
+#include <raylib.h>
 
 Game::Game()
 {
@@ -43,7 +44,12 @@ void Game::Update()
         if(CheckCollisionRecs(player.GetBasketRect(), apple.getRect()))
         {
             std::cout << "Apple Caught!\n";
-            score++;
+            score += apple.value;
+            if(score < 0)
+            {
+                score = 0;
+            }
+
             CheckForHighscore();
             apple.Reset();
 
@@ -63,12 +69,13 @@ void Game::CreateTrees()
 
 void Game::Draw()
 {
-    for(auto& tree : trees)
+    DrawWorld();
+    DrawWorldUI();
+
+    if(!run)
     {
-        tree.Draw();
+        DrawGameOver();
     }
-    apple.Draw();
-    player.Draw();
 
     //Debug Hitboxes
     //Rectangle basket = player.GetBasketRect();
@@ -89,18 +96,79 @@ void Game::Draw()
         //appleBox.height,
         //BLUE
     //);
+}
 
+void Game::DrawWorld()
+{
+    for(auto& tree : trees)
+    {
+        tree.Draw();
+    }
+    apple.Draw();
+    player.Draw();
+
+}
+
+void Game::DrawWorldUI()
+{
     int timer = (int)timeLeft;
     const char* timerText = TextFormat("%d", timer);
 
-    int fontSize = 50;
-    int textWidth = MeasureText(timerText, fontSize);
+    int timerFontSize = 50;
+    int timerTextWidth = MeasureText(timerText, timerFontSize);
 
     DrawText(
         timerText,
-        GetScreenWidth()/2 - textWidth/2,
+        GetScreenWidth()/2 - timerTextWidth/2,
         20,
-        fontSize,
+        timerFontSize,
+        BLACK
+    );
+
+    DrawText(
+        TextFormat("SCORE: %d", score),
+        50,
+        740,
+        34,
+        BROWN
+    );
+
+    const char* highScoreText = TextFormat("HIGH SCORE: %d", highscore);
+    int highScoreFontSize = 34;
+    int highScoreTextWidth = MeasureText(highScoreText, highScoreFontSize);
+
+    DrawText(
+        highScoreText,
+        GetScreenWidth() - highScoreTextWidth - 50,
+        740,
+        highScoreFontSize,
+        BROWN
+    );
+}
+
+void Game::DrawGameOver()
+{
+    const char* gameOverText = "GAME OVER";
+    int gameOverFontSize = 60;
+    int gameOverTextWidth = MeasureText(gameOverText, gameOverFontSize);
+
+    DrawText(
+        gameOverText,
+        GetScreenWidth()/2 - gameOverTextWidth/2,
+        GetScreenHeight()/2 - 60,
+        gameOverFontSize,
+        RED
+    );
+
+    const char* restartText = "Press SPACE to restart";
+    int restartFontSize = 30;
+    int restartTextWidth = MeasureText(restartText, restartFontSize);
+
+    DrawText(
+        restartText,
+        GetScreenWidth()/2 - restartTextWidth/2,
+        GetScreenHeight()/2 +20,
+        restartFontSize,
         BLACK
     );
 }

@@ -26,6 +26,9 @@ private:
     void SaveHighscoreToFile(int highscore);
     int LoadHighscoreFromFile();
     void CreateTrees();
+    void DrawWorld();
+    void DrawWorldUI();
+    void DrawGameOver();
     Sound fallingSound;
     Sound gameOverSound;
 };
