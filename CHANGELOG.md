@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.4
+
+## Added
+- Character selection screen
+- Boy player option
+- Left/right character selection controls
+- Enter key confirmation for character selection
+- Boy left/right movement sprites.
+
+## Changed
+- Refactored character selection logic into the 'Game' class
+- Updated player movement logic to support multiple character types
+- Updated rendering order so grass draws behind player and tree sprites
+
+## Fixed
+- Fixed selected character reverting back to girl sprites while moving
+
 ## v1.3
 
 ### Added
