@@ -4,7 +4,10 @@ Player::Player()
 {
     girlLeft = LoadTexture("Graphics/girlL.png");
     girlRight = LoadTexture("Graphics/girlR.png");
+    boyLeft = LoadTexture("Graphics/boyL.png");
+    boyRight = LoadTexture("Graphics/boyR.png");
     currentImage = girlRight;
+    type = Girl_Player;
     facingRight = true;
     scale = 0.35f;
     position.x = (GetScreenWidth() - currentImage.width * scale)/2;
@@ -17,6 +20,8 @@ Player::~Player()
 {
     UnloadTexture(girlLeft);
     UnloadTexture(girlRight);
+    UnloadTexture(boyLeft);
+    UnloadTexture(boyRight);
 }
 
 void Player::Draw()
@@ -26,8 +31,17 @@ void Player::Draw()
 
 void Player::MoveLeft()
 {
-    currentImage = girlLeft;
+    if(type == Girl_Player)
+    {
+        currentImage = girlLeft;
+    }
+    else if(type == Boy_Player)
+    {
+        currentImage = boyLeft;
+    }
+
     position.x -= speed;
+    
     if(position.x < -150)
     {
         position.x = -150;
@@ -37,8 +51,17 @@ void Player::MoveLeft()
 
 void Player::MoveRight()
 {
-    currentImage = girlRight;
+    if(type == Girl_Player)
+    {
+        currentImage = girlRight;
+    }
+    else if(type == Boy_Player)
+    {
+        currentImage = boyRight;
+    }
+
     position.x += speed;
+    
     if(position.x > GetScreenWidth() - currentImage.width * scale + 225)
     {
         position.x = GetScreenWidth() - currentImage.width * scale + 225;
@@ -67,5 +90,19 @@ Rectangle Player::GetBasketRect()
             120,
             55
         };
+    }
+}
+
+void Player::SetPlayer(PlayerType newType)
+{
+    type = newType;
+
+    if(type == Girl_Player)
+    {
+        currentImage = girlRight;
+    }
+    else if(type == Boy_Player)
+    {
+        currentImage = boyRight;
     }
 }

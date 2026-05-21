@@ -10,7 +10,7 @@ int main()
     InitAudioDevice();
 
     SetTargetFPS(60);
-
+    
     Game game;
 
     while(WindowShouldClose() == false)
@@ -21,9 +21,11 @@ int main()
 
         BeginDrawing();
         ClearBackground(SKYBLUE);
-        DrawRectangle(0, 640, 1400, 160, GREEN);
+
         game.Draw();
         EndDrawing();
     }
     CloseWindow();
+    
+    return 0;
 }

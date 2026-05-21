@@ -16,7 +16,9 @@ public:
     bool run;
     int score;
     int highscore;
+    int selectedCharacter;
     float timeLeft;
+    bool characterChosen;
     Music music;
 private:
     Player player;

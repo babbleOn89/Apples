@@ -9,10 +9,17 @@ Game::Game()
     fallingSound = LoadSound("Sounds/falling.ogg");
     gameOverSound = LoadSound("Sounds/lvlcomplete.ogg");
     PlayMusicStream(music);
+    
     run = true;
+    
     score = 0;
     highscore = LoadHighscoreFromFile();
+    
     timeLeft = 45.0f;
+
+    characterChosen = false;
+    selectedCharacter = 1;
+
     CreateTrees();
 }
 
@@ -25,6 +32,34 @@ Game::~Game()
 
 void Game::Update()
 {
+    if(characterChosen == false)
+    {
+        if(IsKeyPressed(KEY_LEFT))
+        {
+            selectedCharacter = 1;
+        }
+        
+        if(IsKeyPressed(KEY_RIGHT))
+        {
+            selectedCharacter = 2;
+        }
+        
+        if(IsKeyPressed(KEY_ENTER))
+        {
+            characterChosen = true;
+
+            if(selectedCharacter == 1)
+            {
+                player.SetPlayer(Girl_Player);
+            }
+            else if(selectedCharacter == 2)
+            {
+                player.SetPlayer(Boy_Player);
+            }
+        }
+        return;
+    }
+
     if(run)
     {
         timeLeft -= GetFrameTime();
@@ -69,6 +104,29 @@ void Game::CreateTrees()
 
 void Game::Draw()
 {
+    if(characterChosen == false)
+    {
+        ClearBackground(SKYBLUE);
+
+        DrawText("CHOOSE YOUR CHARACTER", 300, 80, 50, BROWN);
+
+        if(selectedCharacter == 1)
+        {
+            DrawCircle(350, 500, 100, Fade(YELLOW, 0.35f));
+        }
+        else if(selectedCharacter == 2)
+        {
+            DrawCircle(950, 500, 100, Fade(YELLOW, 0.35f));
+        }
+        // Temporary preview placeholders
+        DrawText("GIRL", 300, 500, 40, BLACK);
+        DrawText("BOY", 920, 500, 40, BLACK);
+
+        DrawText("LEFT / RIGHT to choose", 440, 620, 30, BLACK);
+        DrawText("ENTER to confirm", 500, 670, 30, BLACK);
+
+        return;
+    }
     DrawWorld();
     DrawWorldUI();
 
@@ -100,10 +158,12 @@ void Game::Draw()
 
 void Game::DrawWorld()
 {
+    DrawRectangle(0, 640, 1400, 160, GREEN);
     for(auto& tree : trees)
     {
         tree.Draw();
     }
+
     apple.Draw();
     player.Draw();
 
