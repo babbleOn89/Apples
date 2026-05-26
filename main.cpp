@@ -13,7 +13,7 @@ int main()
     
     Game game;
 
-    while(WindowShouldClose() == false)
+    while(!WindowShouldClose())
     {
         UpdateMusicStream(game.music);
         game.HandleInput();
